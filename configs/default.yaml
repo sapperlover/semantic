@@ -1,0 +1,41 @@
+experiment_name: ae_deep_jscc_cifar10
+seed: 42
+device: auto
+
+data:
+  data_path: null
+  batch_size: 128
+  num_workers: 2
+  pin_memory: false
+  splits:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+
+training:
+  epochs: 100
+  lr: 0.001
+  weight_decay: 0.0
+  log_interval: 50
+
+model:
+  # The homework requires latent code shape 8 x 8 x 16.
+  latent_shape_hwc: [8, 8, 16]
+  latent_total_k: 1024
+  power_normalize: true
+
+channel:
+  # SNR settings used by the Deep JSCC experiments in the assignment.
+  snr_db_list: [1, 4, 7, 13, 19]
+  train_snr_db: 7
+  test_samples: 500
+
+rate_distortion:
+  kp_list: [128, 256, 384, 512, 640, 768, 896, 1024]
+  input_shape_hwc: [32, 32, 3]
+
+output:
+  out_dir: runs
+  checkpoint_dir: runs/checkpoints
+  plot_dir: runs/plots
+  log_dir: runs/logs
