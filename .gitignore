@@ -57,3 +57,6 @@ tests/tiny_dataset.npz
 !scripts/*.py
 !tests/
 !tests/*.py
+
+*.pdf
+*.md
